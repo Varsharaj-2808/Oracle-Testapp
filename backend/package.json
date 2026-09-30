@@ -1,0 +1,19 @@
+{
+  "name": "env-secret-testapp-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Express API: Supabase data access and Brevo transactional email.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "env-secret-testapp": "file:..",
+    "express": "^5.2.1"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "env-secret-testapp-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "React UI for the environment-variable and secret-management sample app.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "env-secret-testapp": "file:..",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "vite": "^8.3.1"
+  }
+}
