@@ -1,20 +1,3 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import dotenv from 'dotenv';
-
-const here = path.dirname(fileURLToPath(import.meta.url));
-const projectRoot = path.resolve(here, '..', '..', '..');
-
-// The project root is always searched first, so the app behaves the same no
-// matter which directory `node` was started from. Set DOTENV_CONFIG_PATH to
-// point somewhere else if you need to.
-const envPath = process.env.DOTENV_CONFIG_PATH || path.join(projectRoot, '.env');
-
-if (fs.existsSync(envPath)) {
-  dotenv.config({ path: envPath });
-}
-
 const isSet = (value) => typeof value === 'string' && value.trim() !== '';
 
 /**
@@ -37,7 +20,7 @@ const schema = [
 const readVar = (name) => (isSet(process.env[name]) ? process.env[name].trim() : '');
 
 export const env = {
-  envPath,
+  
 
   PORT: Number(readVar('PORT')) || 4000,
   NODE_ENV: readVar('NODE_ENV') || 'development',

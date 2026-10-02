@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
+
 import {
   configStatus,
   detectLeakedSecrets,
@@ -53,12 +54,10 @@ function start() {
   const missing = configStatus().filter((entry) => entry.required && !entry.present);
 
   console.log('--- secret-management sample backend ---');
-  console.log(`  env file       : ${env.envPath}${env.envPath && ' (loaded if present)'}`);
+
+  
   console.log(`  supabase       : ${isSupabaseConfigured() ? 'configured' : `not configured, missing ${missingSupabaseVars().join(', ')}`}`);
   console.log(`  brevo          : ${isBrevoConfigured() ? 'configured' : `not configured, missing ${missingBrevoVars().join(', ')}`}`);
-  if (missing.length) {
-    console.log('  copy .env.example to .env and fill in the values above to enable the features.');
-  }
   console.log(`  listening on   : http://localhost:${env.PORT}`);
   console.log('---------------------------------------');
 
