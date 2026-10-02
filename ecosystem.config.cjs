@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'env-secret-testapp-api',
-      script: 'backend/src/index.js',
+      script: 'backend/src/bootstrap.js',
       cwd: __dirname,
       interpreter: 'node',
       env: {
