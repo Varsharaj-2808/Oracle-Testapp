@@ -1,4 +1,6 @@
 import { createRequire } from 'node:module';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
 
@@ -6,7 +8,12 @@ const dotenv = require('dotenv');
 const common = require('oci-common');
 const secrets = require('oci-secrets');
 
-dotenv.config({ path: '../.env' });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({
+  path: path.resolve(__dirname, '../../../.env'),
+});
 
 const {
   InstancePrincipalsAuthenticationDetailsProviderBuilder,
@@ -32,7 +39,7 @@ export async function loadOciEnv() {
   } else {
     provider = await new InstancePrincipalsAuthenticationDetailsProviderBuilder().build();
   }
-  
+
   const client = new SecretsClient({
     authenticationDetailsProvider: provider,
   });
