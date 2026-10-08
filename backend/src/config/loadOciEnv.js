@@ -24,18 +24,18 @@ const { ConfigFileAuthenticationDetailsProvider } = common;
 const { SecretsClient } = secrets;
 
 export async function loadOciEnv() {
-  const { OCI_VAULT, APP_NAME, APP_ENV, OCI_VAULT_ID } = process.env;
+  const { OCI_VAULT, APP_NAME, APP_ENV, ENV_VERSION, OCI_VAULT_ID } = process.env;
 
   if(OCI_VAULT?.toLowerCase() !== 'true') {
     console.log('OCI Vault disabled; using local .env');
     return;
   }
 
-  if (!APP_NAME || !APP_ENV || !OCI_VAULT_ID) {
+  if (!APP_NAME || !APP_ENV || !ENV_VERSION || !OCI_VAULT_ID) {
     throw new Error('Missing OCI bootstrap configuration');
   }
 
-  const secretName = `${APP_NAME}-${APP_ENV}`;
+  const secretName = `${APP_NAME}-${APP_ENV}-${ENV_VERSION}`;
 
   let provider;
 
